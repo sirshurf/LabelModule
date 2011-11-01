@@ -1,4 +1,35 @@
 <?php
-echo $this->Actions();
+echo $this->Actions ();
 echo $this->grid;
-echo $this->Actions();
+echo $this->Actions ();
+?>
+<div id="uploader">
+	<?php echo $this->objForm;?>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	$( "#uploader" ).dialog({
+		resizable: false,
+		height: 500,
+		width: 450,
+		modal: true,
+		autoOpen: false,
+		buttons: {
+			"<?php
+			echo $this->translate('LBL_BTN_MENU_UPLOAD_START');
+			?>": function() {
+				// Save Meeting Data
+				$('#<?php echo $this->objForm->getAttrib('id');?>').submit();
+			
+								
+				$( this ).dialog( "close" );
+			},
+			"<?php
+			echo $this->translate('LBL_BTN_MENU_UPLOAD_CANCEL');
+			?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}	});
+
+});
+</script>
